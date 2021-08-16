@@ -1,0 +1,21 @@
+
+<div>
+    <button (click)="onShow()">show</button>
+</div>
+
+
+<div>
+    <button (click)="onShowEvent($event)">show2</button>
+</div>
+
+<input type="text" (input)="userName=($any($event.target).value)" ><br/>
+
+{{userName}}
+<div>
+    <input [(ngModel)]="username2" />
+    {{username2}}
+</div>
+
+<input type="text" [(ngModel)]="username3" name="username3" class="form-control" placeholder="username3"  >
+
+<input [(ngModel)]="name" (ngModelChange)="change()">
