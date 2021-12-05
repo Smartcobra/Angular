@@ -1,0 +1,21 @@
+<div style="margin-top: 40px">
+  <h2>Filter product</h2>
+  <div class="form-group">
+    <label class="form-label">Choose Catagory</label>
+    <div>
+      <!-- (change)="onCategoryChanged()"  :: the method will activate and starts emit -->
+      <select
+        (change)="onCategoryChanged()"
+        [(ngModel)]="selectedCatageryName"
+        class="form-control"
+      >
+        <option value="All">All [{{ allCount }}]</option>
+        <option value="Electronics">
+          Electronics [{{ electronicsCount }}]
+        </option>
+        <option value="FootWare">FootWare [{{ footwareCount }}]</option>
+        <option value="Fashion">Fashion [{{ fashionCount }}]</option>
+      </select>
+    </div>
+  </div>
+</div>

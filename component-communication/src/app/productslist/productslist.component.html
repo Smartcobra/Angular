@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  <h2 class="text-center text-primary">
+    <span class="fa fa-shopping-bag"> My Shopping</span>
+  </h2>
+  <div class="row" style="margin-top: 40px">
+    <div class="col-2">
+      <!-- these values are sending to child component (filter.component) -->
+      <!-- EmitCategoryName is a custom event and coming from filter.component -->
+      <app-filter
+        (EmitCategoryName)="onFilterCategoryChanged($event)"
+        [allCount]="products.length"
+        [electronicsCount]="electronicsCount"
+        [footwareCount]="footwareCount"
+        [fashionCount]="fashionCount"
+      ></app-filter>
+    </div>
+    <div class="col-10">
+      <div class="row row-cols-1 row-cols-md-6 g-4">
+        <ng-container *ngFor="let item of products">
+          <div
+            class="col"
+            *ngIf="categoryName == 'All' || categoryName == item.Category"
+          >
+            <div class="card h-100">
+              <div class="card-header">
+                <img [src]="item.Photo" width="160" height="160" />
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">{{ item.Name }}</h3>
+                <p class="card-subtitle">{{ item.Price | currency: "INR" }}</p>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
