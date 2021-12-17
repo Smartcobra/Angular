@@ -1,0 +1,10 @@
+<div class="container-fluid">
+  <div class="form-label">
+    <h2>Parent Component</h2>
+    <input type="text" [(ngModel)]="username" />
+  </div>
+
+  <!-- child component -->
+  <div class="form-floating"></div>
+  <app-display [username]="username"></app-display>
+</div>

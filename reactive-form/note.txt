@@ -1,0 +1,112 @@
+================Reative forms or Model Driven Forms===================
+-Reactive forms provide Model Driven approach
+-They are bound model so that any change in model will update the view.
+- A model driven approach binds the view with data structure.
+- Configurations of forms and controls are defined at application logic level.(controller)
+- Easy to extend and loosley coupled.
+- Easy to test.
+- Clean separation of funtionality and represntation.
+- Reative forms are asyncronous , they allow to submit only a specfic portion of form.
+- Type support partial updates.
+- You can dynamically add or remove controls from form.
+- The library required for configuration and implementation of reative forms is "@angular/forms"
+- The class required for configure forms and controls dynamically
+        -ReactiveFormsModule
+       - FormsModule
+
+===================================================================================================================
+                                     configure a Form control
+                                     ========================
+- The  form element like textbox.checkbox,radio,dropdown etc are configured by using "FormControl" base.
+- Any form element can be configured by using "FormControl"
+
+syntax-
+ public elementName= new FormControl("value",options);
+
+ - The FormControl bound to any element in the view by using "[formControl]" property.It is the member of "ReactiveFormsModule"
+   Import the module into "app.module.ts"
+
+ -Syntax:
+     <input type="text" [formControl]="elementName">
+
+     //[formControl] - to bind with element in UI
+
+- You can dynamically set value or update value into form control by using the functions-
+            #setValue()
+            #patchValue()
+
+Syntax: 
+this.elementName.setValue("someValue") ;
+
+
+################################################################################################################
+Create and Configure FORM and Nested Forms-----
+-You can dynamically create and configure forms.
+-It allows to extend the form and make it more asyncronous.
+-You can create a form by using "FormGroup" base.
+- "FormGroup" is a collection of  "FormControls".
+
+syntax-
+ public parentForm= new FormGroup({
+     controlName: new FormControl(),
+     controlName: new FormControl(),
+
+     childForm:new FormGroup({
+         controlName: new FormControl("")
+     })
+ });
+
+
+- To bind a form and nested form you have to use the properties
+   ## [formGroup] -ParentForm
+   ## [formGroupName] -Child Form
+
+                                    
+  Synatx-
+     
+     <form [formGroup] ="parentForm" >
+         <div [formGroupName]="childForm">
+          </div>
+    </form>
+
+- If you are defining a control in form group the control is bound to element by using the attribute "formControlName".
+
+Synatx:
+  <input type="text" formControlName="controlName">
+
+The methods used to set and patch values are
+   ** setValue()
+   ** patchValue()
+
+
+   =======================================================================================================
+
+   #########################  Form Builder in Reactive Form   ####################################
+   - FormBuilder is a service provided by Angular to configure forms and its elements dynamically.
+   - FormBuilder uses singleton Pattern.
+   - FormBuilder provides three important methods
+                 # group() --Configure a form group a set of elements initialized .<form>
+                 # control()
+                 # array()
+   - group() configures a form group.<form>
+   - control() configures a form control <input><select> etc
+   - array() configures a collection of form controls. You can add or remove controls dynamically.
+   - FormBuilder uses the following properties to bind with elements is UI.
+        * formGroup          : ParentForm
+        * formGroupName      : Child Form
+        * formControlName    : Form Elements
+
+  - FormBuilder is a member of "@angular/forms" 
+
+  ===================================
+  ####  Form Array and Form control
+  -- Form Array to "add or remove" any form element dynamically.
+  -- it is configured using "array" method of "FormBuilder" service.
+  -- Form Array represents TypeScript array and can make use of all array functions.
+      *push()
+      *pop()
+      *removeAt()
+      *shift()
+      ** etc**
+
+

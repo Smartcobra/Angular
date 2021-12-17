@@ -1,0 +1,18 @@
+<div class="container-fluid">
+  <h2>Produc Details</h2>
+  <dl>
+    <dt>Name</dt>
+    <dd>{{ product.Name }}</dd>
+    <dt>price</dt>
+    <dd>{{ product.Price | currency }}</dd>
+    <dd>{{ product.Price | currency: "INR" }}</dd>
+    <dd>{{ product.Price | number }}</dd>
+    <dd>{{ product.Price | number: "5.2-2" }}</dd>
+    <dd>{{ product.Price | number: "10.2-2" }}</dd>
+    <dd>{{ product.Price | number: "10.4-4" }}</dd>
+    <dt>Manufactured</dt>
+    <dd>{{ product.mfd }}</dd>
+    <dd>{{ product.mfd | date }}</dd>
+    <dd>{{ product.mfd | date: "shortDate" }}</dd>
+  </dl>
+</div>

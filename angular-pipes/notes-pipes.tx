@@ -1,0 +1,95 @@
+pipe is used to transform data
+Angular pipes are used for formating and filtering data.
+All pipes in angular are derived from "PipeTransform" base.
+Every pipe implements a functionality by using transform() method.
+Evry pipe is defined with a pipe name, which configured using @Pipe() marker.
+Angular provides several built in pipes and also allows to create a custom pipes.
+
+syntax:
+import {PipeTranform} from '@angular/core';
+
+@Pipe ({
+  name:"uppercase"
+})
+export class UpperCase implements PipeTransform{
+  transform(value){
+    return value;
+  }
+}
+
+--Angular built in pipes:
+   >AsyncPipe
+   >CurrencyPipe
+   >DatePipe
+   >DecimalPipe
+   >I18PularPipe
+   >I18SelectPipe
+   >JsonPipe
+   >KeyValuepipe
+   >UppercasePipe
+   >LowerCasePipe
+   >TitleCasePipe
+   >PercentPipe
+   >SlicePipe
+
+   
+pipes are assigned to your data by using "|" pipe symbol
+
+-Angular pipes are default " Pure" pipes.They will not change the value ; they jus defined a format for value.
+- If Pipe can change the state and value then it is "Impure" pipe.
+
+Pipe                      Name                                           Description
+-----                ---------------                                     -----------------
+UpperCasePipe         uppercase                                         converts uppercase
+LowerCasePipe         lowercase                                         converts to lower Lower case 
+TitleCasePipe          titlecase                                        capitalize first letter of each word
+DecimalPipe            number                                           it used to dispaly numeric value with thousand separator and fractions
+                                                                           it compireses of 
+                                                                            Minimum-Integer-Digits
+                                                                            Minimum-Fraction_digits
+                                                                            Maximum-Fraction-Digits
+                                                                            systanx :
+                                                                             {{data | number}}
+                                                                             {{ data | number :{miniIntegerDigits}.minFractiondigits}-{maxFractionDigits} }}
+
+CurrencyPipe            currency                                          It is used to dispaly numbers in a currency format. It comprises thousand separator,fractions and a currency symbol
+DatePipe                 date                                              It is used to dispaly Date and time values in various date and time formats
+                                                                            You can use predefined formats for date or your can define custom format.
+                                                                            predefinr formats
+                                                                            -short
+                                                                            -medium
+                                                                            -long
+                                                                            -full
+                                                                            -shortdate
+                                                                            -mediumDate
+                                                                            -shortTime
+                                                                            -mediumTime
+
+                                                                            Custom Format:
+                                                                            MM      - 2 Digits Month
+                                                                            MMM     -Short Month Name
+                                                                            MMMM    -Long MOnth Name
+                                                                            dd      -2 Digits Date
+                                                                            d       -1 Digit  Date
+                                                                            yy     - 2 digits Year
+                                                                            yyyy     -4 digits Year
+
+                                                                        
+                                                                          
+--------------------------------------------------------------------------
+
+Custom Pipe
+Angular allows to configure and create own pipes that can serve any specifi situation your application.
+
+
+-pipe is a class that implement "PipeTransform" base class.
+-it configure a funtionality for pipe by using "transform()" method.
+-The "transform()" method must return a transformation.
+-pipe is marked by using "@Pipe" marker.
+-@Pipe() it specifies the name and meta data for the pipe. 
+pipes are registered "app.module.ts""
+
+-----------------------------------------------------------------------------
+
+The process of creating reusable ,maintainble , and testable components for our application and injecting into
+components to use their functionality is known as "Dependency Injection" 

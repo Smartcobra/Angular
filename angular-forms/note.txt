@@ -1,0 +1,124 @@
+-Form is a container that comprises of set of elements, which allow interaction with our application.
+-Form provides an UI from where user can input ,edit ,delete view data.
+-HTML from compises of elements like button,textbox,checkbox , radio ,listbox etc.
+-Angular makes the static HTML form into dynamic.
+-HTML presents the form and Angular makes it interactive to handel client-side interaction.
+-Based on where Angular is handling interactions the forms in angular are classified into 2 groups
+         **Template Driven forms
+         **Model Drive Form/ Reactive Form
+
+*************************Template Driven Forms**************************** 
+-A template driven form configures and handels all intaractions at View Level (HTML)
+-Configuration of a form and its manipulation both handeled in HTML template.
+-Very optimized controller level interaction.All interactions are at view level.
+-It reduces the number of requestes to a component.
+-It improves the page load time.
+-It is good for forms designed in "in-line" technique.
+-Tempalte drive form is heavy on page.Slow in handling intractions and rendering.
+-Hard to test and extend the form.
+-Separation issues . Not loosely coupled.
+-You can use template driven forms when you are design an UI that does not require regular extensions.
+-The directives that are used to configure "Form and Form Elements" in template driven approach.
+   **NgForm
+   **NgModel
+-NgForm :: It provides a set of properties and methods that are used to configure and handel <form> element.
+-NgModel :: It provides a set of properties and methods that are used to configure and handel a form control like button,
+textbox,checkbox, radio, driodown list etc.
+- The library for "NgForm and NgModel" is "@angular/forms".
+- The module is "FormsModule" 
+
+Configuration:
+   <form #formName="ngForm">
+
+   </form>
+
+   -NgForm provides set of attributes
+      **>>value        ##formName.value
+      **>>pristine     ## formName.pristine
+      **>>dirty        ##fromName.dirty
+      **>>valid
+      **>>invalid
+      **>>etc..... 
+
+configure a Form Element:
+  -"NgModel" is used to make a static form control into dynamic.
+  <input type="text" ngModel #txtName="ngModel" name="txtName">
+   txtName.value
+   txtName.valid
+
+   KeyNote: A form refernce must implement "NgForm" to handel the form behaviour.
+   <form #frmRegister="ngForm"> [ngForm is of type NgForm]
+   -NgForm makes the form dynamic.
+   -NgForm is a member of "FormsModule" in "@angular/forms"
+   -Form can't access and submit data of any control without a "Name".Every control defined a form must have a "name" defined 
+       form must have a "name" defined. 
+       <input type="text" name="txtName">
+
+- Angular can't recognize any form element dynamically . It require static form element must transform into dynamic element.
+-"NgModel" is a directive that makes a Static FORM element into Dynamic.
+ <input ngModel type="text" name="txtName">
+ <input
+              [(ngModel)]="model.txtName"
+              name="txtName"
+              type="text"
+              class="form-control"
+            />
+
+ -Every dynamic element must have a reference name,which is used as a model name to store its value dynamically.
+ Every form element must implement "NgModel".
+ -Every control is configured "ngMOdel", so that it can have a refernce name dynamically.
+
+ <input ngMOdel #txtName="ngModel" name="txtName" type="text" class="form-control" />
+-Form related properties are derived from "NgForm"
+-Control related properties are derived from "NgModel"
+
+Accesing the values from Template Form:
+       Accesing all values
+  -You can use "value" property of "NgForm".
+   - the value property return an object that contains collection of key value pairs.
+     -- the key value pairs refer to the control Name and Control Value.
+     ---All form control and there values can be accesed by using "formName.value" property.
+     Syntax:
+        frmRegister.value-> it returns collectionof all form elements and their values as an object
+
+----Accesing any specific value-
+- You can access the value of control by using "value" property of "NgModel"
+  syntax :
+      txtName.value -> returns the value of any speicif element.  
+  
+
+  //////////////////////////////////////////////////////////////////////////////////////////
+    -------------Validation in Template Driven Forms-----------------------------
+    -Validation is the process of verifying user input.
+    -Validation is required to ensure that contradictory and un-authorized data is not stored into the data source.
+    - Angular can handel validations client side by using a set of validation service.
+    - Angular validation services are catagorized into 2 groups 
+                   - Form State Validation services
+                   - Input State Validation services
+   ### Form State Validation services
+        -- verifies all fields in the form simulteneously at the same time
+        --Angular verifies all fields forms before submitting and report errors.
+
+        service Name                      property                Description
+   -------------------------------------------------------------------------------------------------
+        NgPristine                        pristine                It return boolean true when form is untouched.
+                                                                  All fields loaded but no modification identified.
+      
+         NgDirty                           dirty                  It return Boolean true when form is modified.
+                                                                  At least one field in the form modified then entire 
+                                                                    form is recognized as dirty.
+    
+         NgValid                           valid                 -It return true when all fields in the form are in valid state.
+
+         NgInValid                         invalid                -It returns true when any one form field is state is recognized as invalid
+
+         NgSubmitted                      submited                  it returns true on form submit.
+
+
+--  All angularvalidation services return boolean value
+syntax::
+formName.propertyName
+frmRegister.invalid
+frmRegister.pristine
+
+

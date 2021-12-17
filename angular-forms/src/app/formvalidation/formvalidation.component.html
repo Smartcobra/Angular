@@ -1,0 +1,75 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3">
+      <form #frmRegister="ngForm">
+        <dl>
+          <dt>Name</dt>
+          <dd>
+            <input
+              type="text"
+              name="txtName"
+              ngModel
+              #txtName="ngModel"
+              required
+              minlength="4"
+            />
+          </dd>
+          <dt>Mobile</dt>
+          <dd>
+            <input
+              type="text"
+              name="txtMobile"
+              ngModel
+              #txtMobile="ngModel"
+              required
+              pattern="\+91[0-9]{10}"
+            />
+          </dd>
+        </dl>
+        <div>
+          <button
+            [disabled]="frmRegister.invalid"
+            type="submit"
+            class="btn btn-primary"
+          >
+            Register
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="col-9">
+      <h2>Form State Services</h2>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Service Name</th>
+            <th>value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Pristine</td>
+            <td>{{ frmRegister.pristine }}</td>
+          </tr>
+
+          <tr>
+            <td>Dirty</td>
+            <td>{{ frmRegister.dirty }}</td>
+          </tr>
+          <tr>
+            <td>Invalid</td>
+            <td>{{ frmRegister.invalid }}</td>
+          </tr>
+          <tr>
+            <td>Valid</td>
+            <td>{{ frmRegister.valid }}</td>
+          </tr>
+          <tr>
+            <td>Submitted</td>
+            <td>{{ frmRegister.submitted }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

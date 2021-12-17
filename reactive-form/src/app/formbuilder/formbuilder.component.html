@@ -1,0 +1,62 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3">
+      <form [formGroup]="frmRegister">
+        <fieldset>
+          <legend>Basic Info</legend>
+          <dl>
+            <dt>Name</dt>
+            <dd>
+              <input formControlName="Name" type="text" class="form-control" />
+            </dd>
+            <dt>Price</dt>
+            <dd>
+              <input formControlName="Price" type="text" class="form-control" />
+            </dd>
+          </dl>
+        </fieldset>
+        <fieldset>
+          <legend>Stock Details</legend>
+          <div formGroupName="frmDetails">
+            <dl>
+              <dt>City</dt>
+              <dd>
+                <select formControlName="City" class="form-select">
+                  <option>Delhi</option>
+                  <option>Hyderabad</option>
+                </select>
+              </dd>
+              <dt>InStock</dt>
+              <dd>
+                <input
+                  formControlName="InStock"
+                  class="form-check-input"
+                  type="checkbox"
+                />
+              </dd>
+            </dl>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <div class="col-9">
+      <h2>All the Details</h2>
+      <dl>
+        <dt>Name</dt>
+        <dd>{{ frmRegister.value.Name }}</dd>
+        <dt>Price</dt>
+        <dd>{{ frmRegister.value.Price }}</dd>
+        <dt>City</dt>
+        <dd>{{ frmRegister.value.frmDetails.City }}</dd>
+        <dt>Stock</dt>
+        <dd>
+          {{
+            frmRegister.value.frmDetails.InStock == true
+              ? "available"
+              : "Out of Stock"
+          }}
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>

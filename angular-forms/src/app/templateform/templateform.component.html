@@ -1,0 +1,86 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3">
+      <h2>Register Product</h2>
+      <!-- ngForm is a type of NgForm // import FormsModule -->
+      <!-- (ngSubmit)="onFormSubmit(frmRegister.value)  :: send the valu to the controller -->
+      <form #frmRegister="ngForm" (ngSubmit)="onFormSubmit(frmRegister.value)">
+        <div class="form-group">
+          <label class="form-label">Name</label>
+          <!-- "NgModel" is a directive that makes a Static FORM element into Dynamic -->
+          <div>
+            <!--  [(ngModel)]="model.txtName" -->
+            <input
+              ngModel
+              #txtName="ngModel"
+              name="txtName"
+              type="text"
+              class="form-control"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Price</label>
+          <div>
+            <input
+              ngModel
+              #txtPrice="ngModel"
+              name="txtPrice"
+              type="text"
+              class="form-control"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Quantity</label>
+          <div>
+            <input
+              ngModel
+              #txtQty="ngModel"
+              name="txtQty"
+              type="text"
+              class="form-control"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Shipped to</label>
+          <div>
+            <select
+              ngModel
+              #lstShipped="ngModel"
+              name="lstShipped"
+              class="form-control"
+            >
+              <option>Delhi</option>
+              <option>Hyderabad</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>In Stock</label>
+          <div>
+            <div>
+              <input
+                ngModel
+                #optStock="ngModel"
+                name="optStock"
+                type="checkbox"
+              />
+              Yes
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Register</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-9">
+      <pre>
+            {{ frmRegister.value | json }}
+        </pre
+      >
+    </div>
+  </div>
+</div>
