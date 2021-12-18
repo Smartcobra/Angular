@@ -109,4 +109,43 @@ The methods used to set and patch values are
       *shift()
       ** etc**
 
+#######################################################################################################
+ ================================= Validation in Reactive Forms ======================================
+
+ -- In reative form component class is "single source of truth".
+ -- Insted of adding validators through attributes in template .You can configured them in controller class.
+ -- Angular will call the validator functions whenever the value changes.
+ -- It verifies the input value is according to the validator defined and returns boolean trueor false.
+ -- Angular provides a set up built in validators and also allows custom validator functions.
+ -- The built in validators are derived from "Validators" class.
+ -- The commomnly used validator functions are ->
+          o min()
+          o max()
+          o required()
+          o requiredTrue()
+          o email()
+          o minLength()
+          o maxLength()
+          o Pattern()
+          o nullVaslidator()
+          o compose()
+          o composeAsync()
+
+Question:
+          What are Sync and Async Validators?
+Ans:
+       Sync Validators are Synchronous functions that take a control instance (control object) and immediately 
+       return a set validation erros or null.
+
+       Asyn Validators are Asyncronous functions that take a control instance and return a Observable which emits the result
+       later as per the situation.
+      
+-- Angular bydefault uses "Async" validators.
+
+Syntax:: 
+       public txtName= new FormControl('value',[Validators])
+       <input validator>
+       
+
+
 
